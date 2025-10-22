@@ -35,7 +35,7 @@ def process_customer(customer_id: str) -> str:
 #    return results
 
 @flow
-def etl():
+def main():
     df = extract_data()
     load_data(df)
     return
@@ -43,6 +43,6 @@ def etl():
 
 
 if __name__ == "__main__":
-    etl.serve(
-        name="my-first-deployment"
+    main.serve(
+        name="test-deployment"
         )
