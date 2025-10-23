@@ -2,7 +2,7 @@ from prefect import flow, task
 from prefect.assets import materialize 
 import random
 import csv
-import requests
+import io, urllib.request
 
 input_file = "https://gist.github.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1#file-example_input-csv"
 output_file = "https://gist.github.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/example_output.csv"
@@ -11,11 +11,10 @@ output_file = "https://gist.github.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1
 @materialize(input_file)
 def extract_data() -> str:
     data_extract = []
-    response = requests.get(input_file)
-    response.raise_for_status()
-    lines = response.text.splitlines()
-    reader = csv.DictReader(lines)
-    data_extract = list(reader)
+    with urllib.request.urlopen(input_file) as resp:
+        text = resp.read().decode("utf-8")
+        reader = csv.DictReader(io.StringIO(text))
+        data_extract = list(reader)
     return data_extract
 
 @materialize(output_file)
