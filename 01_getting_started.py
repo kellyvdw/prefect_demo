@@ -45,8 +45,8 @@ def join_data(data_a, data_b):
 def main():
     customer_ids = get_customer_ids()
     results = process_customer()
-    join_data (customer_ids, results)
-    return results
+    combined_results = join_data(customer_ids, results)
+    return combined_results
 
 
 
