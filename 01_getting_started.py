@@ -4,7 +4,7 @@ import random
 import csv
 import io, urllib.request
 
-input_file = "https://gist.github.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1#file-example_input-csv"
+input_file = "https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/raw/22b7a28fb8ac31303a6350702f26bc75c93d5551/example_input.csv"
 output_file = "https://gist.github.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/example_output.csv"
 
 
