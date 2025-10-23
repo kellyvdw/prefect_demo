@@ -10,9 +10,10 @@ output_file = "https://gist.github.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1
 @materialize(input_file)
 def extract_data() -> str:
     data_extract = []
-    reader = csv.reader(input)
-    for row in reader:
-        data_extract.append(row)
+    with open(input_file, 'r', newline='') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            data_extract.append(row)
     return data_extract
 
 @materialize(output_file)
