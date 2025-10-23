@@ -1,7 +1,7 @@
 from prefect import flow, task
 from prefect.assets import materialize 
 import random
-import pandas as pd
+import csv
 
 input_file = "example_input.csv"
 output_file = "example_output.csv"
@@ -9,12 +9,17 @@ output_file = "example_output.csv"
 
 @materialize(input_file)
 def extract_data() -> str:
-    df = pd.read_csv('input_file')
-    return df
+    data_extract = []
+    reader = csv.reader(input)
+    for row in reader:
+        data_extract.append(row)
+    return data_extract
 
 @materialize(output_file)
-def load_data(df):
-    df.to_csv(output_file, index = False)
+def load_data(data_extract):
+    with open(output_file, 'w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerows(data_extract)
     return
 
 @task
