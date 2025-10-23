@@ -28,26 +28,19 @@ def extract_output_data() -> str:
     return data_extract
 
 @task
-def get_customer_ids() -> list[str]:
+def get_customer_ids():
     return extract_input_data()
 
 @task
-def process_customer(customer_id: str) -> str:
+def process_customer():
     # Process a single customer
     return extract_output_data()
 
-#@flow
-#def main() -> list[str]:
-#    customer_ids = get_customer_ids()
-    # Map the process_customer task across all customer IDs
-#    results = process_customer.map(customer_ids)
-#    return results
-
 @flow
 def main():
-    df = extract_data()
-    #load_data(df)
-    return
+    customer_ids = get_customer_ids()
+    results = process_customer()
+    return results
 
 
 
