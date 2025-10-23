@@ -3,8 +3,8 @@ from prefect.assets import materialize
 import random
 import csv
 
-input_file = "example_input.csv"
-output_file = "example_output.csv"
+input_file = "https://gist.github.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/example_input.csv"
+#output_file = "example_output.csv"
 
 
 @materialize(input_file)
@@ -42,7 +42,7 @@ def process_customer(customer_id: str) -> str:
 @flow
 def main():
     df = extract_data()
-    load_data(df)
+    #load_data(df)
     return
 
 
