@@ -2,18 +2,20 @@ from prefect import flow, task
 from prefect.assets import materialize 
 import random
 import csv
+import requests
 
-input_file = "https://gist.github.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/example_input.csv"
+input_file = "https://gist.github.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1#file-example_input-csv"
 output_file = "https://gist.github.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/example_output.csv"
 
 
 @materialize(input_file)
 def extract_data() -> str:
     data_extract = []
-    with open(input_file, 'r', newline='') as file:
-        reader = csv.reader(file)
-        for row in reader:
-            data_extract.append(row)
+    response = requests.get(input_file)
+    response.raise_for_status()
+    lines = response.text.splitlines()
+    reader = csv.DictReader(lines)
+    data_extract = list(reader)
     return data_extract
 
 @materialize(output_file)
