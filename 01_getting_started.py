@@ -36,10 +36,16 @@ def process_customer():
     # Process a single customer
     return extract_output_data()
 
+@task
+def join_data(data_a, data_b):
+    data_c = data_a + data_b
+    return data_c
+
 @flow
 def main():
     customer_ids = get_customer_ids()
     results = process_customer()
+    join_data (customer_ids, results)
     return results
 
 
