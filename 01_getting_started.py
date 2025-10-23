@@ -4,7 +4,7 @@ import random
 import csv
 
 input_file = "https://gist.github.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/example_input.csv"
-#output_file = "example_output.csv"
+output_file = "https://gist.github.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/example_output.csv"
 
 
 @materialize(input_file)
