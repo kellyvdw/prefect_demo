@@ -3,10 +3,8 @@ from prefect.assets import materialize
 import random
 import csv
 import io, urllib.request
-import json
-from prefect_github import GitHubCredentials
-
-TOKEN = GitHubCredentials.load("github")
+import json, os
+import prefect.blocks.system import Secret
 
 gist_url = f"https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/raw/546e4d49d06d0d1e839080afaaee26247ea4cb5f"
 customer_data = "https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/raw/546e4d49d06d0d1e839080afaaee26247ea4cb5f/customers.csv"
@@ -24,6 +22,8 @@ def get_data(filename):
     return data_extract 
 
 def write_data(filename, data_out, gist_url):
+    github_pat_block = Secret.load("github")
+    TOKEN = github_pat_block.get()
 
     update_payload = {
     "files": {
