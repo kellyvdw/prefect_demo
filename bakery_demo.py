@@ -16,8 +16,8 @@ product_analytics_data = "https://gist.githubusercontent.com/kellyvdw/800e7bf7c0
 def get_data(filename):
     data_extract = []
     with urllib.request.urlopen(filename) as resp:
-        text = resp.read().decode("utf-8")
-        data_extract = csv.DictReader(io.StringIO(text))
+        data_extract = resp.read().decode("utf-8")
+        #data_extract = csv.DictReader(io.StringIO(text))
         #data_extract = list(reader)
     return data_extract 
 
