@@ -10,8 +10,8 @@ gist_url = f"https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e7453
 customer_data = "https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/raw/546e4d49d06d0d1e839080afaaee26247ea4cb5f/customers.csv"
 product_data = "https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/raw/546e4d49d06d0d1e839080afaaee26247ea4cb5f/products.csv"
 transaction_data = "https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/raw/546e4d49d06d0d1e839080afaaee26247ea4cb5f/transactions.csv"
-customer_analytics = "https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/raw/546e4d49d06d0d1e839080afaaee26247ea4cb5f/dollars_by_customer.csv"
-product_analytics = "https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/raw/546e4d49d06d0d1e839080afaaee26247ea4cb5f/dollars_by_product.csv"
+customer_analytics_data = "https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/raw/546e4d49d06d0d1e839080afaaee26247ea4cb5f/dollars_by_customer.csv"
+product_analytics_data = "https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/raw/546e4d49d06d0d1e839080afaaee26247ea4cb5f/dollars_by_product.csv"
 
 def get_data(filename):
     data_extract = []
@@ -52,9 +52,15 @@ def get_customer_data(customer_data):
     data_extract = get_data(customer_data)
     return data_extract
 
+@task
+def write_customer_analytics(customer_analytics_data, customer_analytics, gist_url):
+    write_data(customer_analytics_data,customer_analytics, gist_url)
+    return
+
 @flow
 def main():
     customers = get_customer_data(customer_data)
+    write_data(customer_analytics_data, customers, gist_url )
     return customers
 
 
