@@ -31,6 +31,8 @@ def write_data(filename, data_out, gist_url):
         }
     }
 
+    print(update_payload)
+
     req = urllib.request.Request(
         gist_url,
         data=json.dumps(update_payload).encode("utf-8"),
