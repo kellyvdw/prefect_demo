@@ -61,7 +61,7 @@ def write_customer_analytics(customer_analytics_data, customer_analytics, gist_u
 @flow
 def main():
     customers = get_customer_data(customer_data)
-    write_data(customer_analytics_data, customers, gist_url )
+    write_customer_analytics(customer_analytics_data, customers, gist_url )
     return customers
 
 
