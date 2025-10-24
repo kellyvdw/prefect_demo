@@ -54,15 +54,34 @@ def get_customer_data(customer_data):
     return data_extract
 
 @task
+def get_product_data(product_data):
+    data_extract = get_data(product_data)
+    return data_extract
+
+@task
+def get_transaction_data(transaction_data):
+    data_extract = get_data(transaction_data)
+    return data_extract
+
+@task
+def analyze_customers(customers, products, transactions):
+    customer_analytics = 'Name, Dollars\nKelly, 12.00\nBrian, 20.00\nSudhanshu, 10.00\n'
+    return customer_analytics
+
+@task
 def write_customer_analytics(customer_analytics_data, customer_analytics, gist_url):
     write_data(customer_analytics_data,customer_analytics, gist_url)
     return
 
+
 @flow
 def main():
     customers = get_customer_data(customer_data)
-    write_customer_analytics(customer_analytics_data, customers, gist_url )
-    return customers
+    products = get_product_data(product_data)
+    transactions = get_transaction_data(transaction_data)
+    customer_analytics = analyze_customers(customers, products,transactions)
+    write_customer_analytics(customer_analytics_data, customer_analytics, gist_url )
+    return customer_analytics
 
 
 
