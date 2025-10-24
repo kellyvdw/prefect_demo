@@ -4,7 +4,7 @@ import random
 import csv
 import io, urllib.request
 import json, os
-import prefect.blocks.system import Secret
+from prefect.blocks.system import Secret
 
 gist_url = f"https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/raw/546e4d49d06d0d1e839080afaaee26247ea4cb5f"
 customer_data = "https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/raw/546e4d49d06d0d1e839080afaaee26247ea4cb5f/customers.csv"
