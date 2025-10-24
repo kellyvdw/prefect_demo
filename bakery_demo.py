@@ -22,7 +22,7 @@ def get_data(filename):
     return data_extract 
 
 def write_data(filename, data_out, gist_url):
-    github_pat_block = Secret.load("github")
+    github_pat_block = Secret.load("github-pat")
     TOKEN = github_pat_block.get()
 
     update_payload = {
