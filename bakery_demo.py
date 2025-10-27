@@ -34,7 +34,7 @@ def write_data(filename, data_out, gist_url):
 
     req = urllib.request.Request(
         gist_url,
-        data=json.dumps(update_payload).encode("utf-8"),
+        data=json.dumps(update_payload).encode("utf-8"), 
         headers={
             "Authorization": f"token {TOKEN}",
             "User-Agent": "python-urllib",
@@ -65,7 +65,7 @@ def get_transaction_data(transaction_data):
 
 @task
 def analyze_customers(customers, products, transactions):
-    customer_analytics = 'Name, Dollars\nKelly, 12.00\nBrian, 20.00\nSudhanshu, 10.00\n'
+    customer_analytics = 'Name, Dollars\nKelly, 12.00\nBrian, 20.00\nBrandon, 10.00\n'
     return customer_analytics
 
 @task
