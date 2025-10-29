@@ -65,7 +65,7 @@ def get_transaction_data(transaction_data):
 
 @task
 def analyze_customers(customers, products, transactions):
-    customer_analytics = 'Name, Dollars\nAnna, 12.00\nBrian, 20.00\nBrandon, 10.00\n'
+    customer_analytics = 'Name, Dollars\nGreg, 12.00\nBrian, 20.00\nBrandon, 10.00\n'
     return customer_analytics
 
 @task
