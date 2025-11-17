@@ -8,7 +8,7 @@ from prefect.blocks.system import Secret
 gist_url = f"https://api.github.com/gists/800e7bf7c06028a0d4e74539834e05a1"
 customer_data = "https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/raw/546e4d49d06d0d1e839080afaaee26247ea4cb5f/customers.csv"
 product_data = "https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/raw/546e4d49d06d0d1e839080afaaee26247ea4cb5f/products.csv"
-transaction_data = "https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/raw/546e4d49d06d0d1e839080afaaee26247ea4cb5f/transactions.csv"
+transaction_data = "https://gist.githubusercontent.com/kellyvdw/800e7bf7c06028a0d4e74539834e05a1/raw/546e4d49d06d0d1e839080afaaee26247ea4cb5f/transactionss.csv"
 customer_analytics_data = "dollars_by_customer.csv"
 product_analytics_data = "dollars_by_product.csv"
 
